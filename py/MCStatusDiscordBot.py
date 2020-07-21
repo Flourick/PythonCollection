@@ -26,9 +26,9 @@ class ServerStatus:
 
 def check():
 	if sys.version_info[0] < 3:
-		raise Exception("You must use Python 3.4 or higher.")
-	elif sys.version_info[1] <  4:
-		raise Exception("You must use Python 3.4 or higher.")
+		raise Exception("You must use Python 3.5 or higher.")
+	elif sys.version_info[1] <  5:
+		raise Exception("You must use Python 3.5 or higher.")
 
 def get_server_status():
 	try:
