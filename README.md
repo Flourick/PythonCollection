@@ -24,6 +24,6 @@ You also need two additional python packages: `selenium` and `msedge-selenium-to
 
 ### MCStatusDiscordBot
 
-Discord bot that show the amount of players on minecraft server of your choice. Also has a '/status' command that shows more detailed server information (current players, version and favicon) the message also gets automatically deleted after a minute.
+Discord bot that show the amount of players on minecraft server of your choice. Also has a '/status' command that shows more detailed server information (current players, version and favicon) the message also gets automatically deleted after a minute. Inspired by this: https://github.com/tedztar/mcstatusbot
 
 You need two additional python packages: `mcstatus` and `discord.py`
