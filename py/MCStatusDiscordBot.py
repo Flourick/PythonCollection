@@ -108,4 +108,4 @@ if __name__ == "__main__":
 		await ctx.channel.delete_messages([ctx.message])
 		asyncio.create_task(remove_message(sent, ctx))
 
-	bot.run(TOKEN)
+	bot.run(TOKEN, reconnect=True)
