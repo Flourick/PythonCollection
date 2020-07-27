@@ -48,7 +48,9 @@ def get_server_status():
 		return None
 
 async def status_task():
-	while True:
+	await bot.wait_until_ready()
+
+	while not bot.is_closed():
 		stat = get_server_status()
 
 		if stat == None:
@@ -82,7 +84,31 @@ if __name__ == "__main__":
 	@bot.event
 	async def on_ready():
 		logging.info("BOT CONNECTED!")
-		bot.loop.create_task(status_task())
+
+		task_found = False
+		for task in asyncio.all_tasks():
+			if task.__str__().__contains__("status_task()"):
+				task_found = True
+
+		if not task_found:
+			bot.loop.create_task(status_task())
+
+	@bot.event
+	async def on_resumed():
+		logging.info("BOT CONNECTION RESUMED!")
+		
+		task_found = False
+		for task in asyncio.all_tasks():
+			if task.__str__().__contains__("status_task()"):
+				task_found = True
+
+		if not task_found:
+			bot.loop.create_task(status_task())
+
+	# @bot.event
+	# async def on_member_join(member):
+	# 	# Automatically puts user in a role after he joins, uncomment to enable and fill in a role name
+	# 	await member.add_roles(discord.utils.get(member.guild.roles, name="CHANGE ME TO A ROLE NAME"))
 
 	@bot.command(name="status", aliases=["server"])
 	async def status(ctx):
