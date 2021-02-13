@@ -1,6 +1,6 @@
 # Python Scripts Collection
 
-Collection of various python scripts, may be useful to some of you.
+Collection of various python scripts, may be useful to someone.
 
 ### BackpackBumper
 
@@ -27,3 +27,9 @@ You also need two additional python packages: `selenium` and `msedge-selenium-to
 Discord bot that show the amount of players on minecraft server of your choice. Also has a '/status' command that shows more detailed server information (current players, version and favicon) the message also gets automatically deleted after a minute. Inspired by this: https://github.com/tedztar/mcstatusbot
 
 You need two additional python packages: `mcstatus` and `discord.py`
+
+### IMAPDownloader
+
+Downloads all emails from given email account through IMAP in eml format. Configuration is on top of the script. Creates a directory structure with all the emails in their corresponding mailboxes, you can optionally let it zip for you after it finishes downloading.
+
+You need an additional python package: `imap_tools`
