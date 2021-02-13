@@ -30,6 +30,6 @@ You need two additional python packages: `mcstatus` and `discord.py`
 
 ### IMAPDownloader
 
-Downloads all emails from given email account through IMAP in eml format. Configuration is on top of the script. Creates a directory structure with all the emails in their corresponding mailboxes, you can optionally let it zip for you after it finishes downloading.
+Downloads all emails from given email account through IMAP in eml format. Configuration is on top of the script. Creates a directory structure with all the emails in their corresponding mailboxes, you can optionally let it zip for you after it finishes downloading. It can also resume previous downloads and skip already downloaded emails.
 
 You need an additional python package: `imap_tools`
