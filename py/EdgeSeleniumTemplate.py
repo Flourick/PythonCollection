@@ -1,18 +1,15 @@
-import sys, os, csv
+import sys, os
 
 from msedge.selenium_tools import Edge, EdgeOptions
-
-from selenium.webdriver.support.select import Select
 from selenium.common.exceptions import NoSuchElementException
 
-def exit():
+def die():
 	print()
 	print()
-
 	input("Press enter...")
 	driver.quit()
 
-def getProfile():
+def get_profile():
 	if os.name == "nt":
 		return "C:\\Users\\" + os.getlogin() + "\\SeleniumProfile"
 	elif os.name == "posix":
@@ -20,18 +17,16 @@ def getProfile():
 	else:
 		raise Exception("WHAT SYSTEM ARE YOU USING?!")
 
-def check():
-	if sys.version_info[0] < 3:
-		raise Exception("You must use Python 3.4 or higher.")
-	elif sys.version_info[1] <  4:
+def version_check():
+	if sys.version_info < (3, 4):
 		raise Exception("You must use Python 3.4 or higher.")
 
 if __name__ == "__main__":
-	check()
+	version_check()
 	
 	edgeOptions = EdgeOptions()
 	edgeOptions.use_chromium = True
-	edgeOptions.add_argument("user-data-dir=" + getProfile())
+	edgeOptions.add_argument("user-data-dir=" + get_profile())
 	edgeOptions.add_argument("disable-extensions")
 	edgeOptions.add_argument("disable-gpu")
 	edgeOptions.add_argument("headless")
@@ -49,4 +44,4 @@ if __name__ == "__main__":
 		print(e)
 	
 	finally:
-		exit()
+		die()

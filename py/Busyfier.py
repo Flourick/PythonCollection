@@ -1,14 +1,8 @@
-import sys, time, os
+import time, os
 
-def exit():
-	print()
-	print()
-
-	input("Press enter to exit...")
-	
-def main():
+if __name__ == "__main__":
 	count = 0
-	sleep_time = 240
+	sleep_time = 240 # seconds
 
 	while True:
 		time.sleep(sleep_time)
@@ -22,12 +16,3 @@ def main():
 		count = count + sleep_time
 		if(count % 60 == 0):
 			print("Running for " + str(int(count / 60)) + " minutes!")
-
-if __name__ == "__main__":
-	if sys.version_info[0] < 3:
-		raise Exception("You must use Python 3.4 or higher.")
-	elif sys.version_info[1] <  4:
-		raise Exception("You must use Python 3.4 or higher.")
-	
-	main()
-	exit()

@@ -1,10 +1,9 @@
-import sys, logging, time
+import sys, logging
 import asyncio
 from mcstatus import MinecraftServer
 
 import discord
 from discord.ext import commands
-from discord.ext.commands import Bot
 
 #########################
 ######## FILL IN ########
@@ -24,10 +23,8 @@ class ServerStatus:
 		self.players = players
 		self.version = version
 
-def check():
-	if sys.version_info[0] < 3:
-		raise Exception("You must use Python 3.5 or higher.")
-	elif sys.version_info[1] <  5:
+def version_check():
+	if sys.version_info < (3, 5):
 		raise Exception("You must use Python 3.5 or higher.")
 
 def get_server_status():
@@ -68,8 +65,9 @@ async def remove_message(sent, ctx):
 	await asyncio.sleep(60)
 	await ctx.channel.delete_messages([sent])
 
+
 if __name__ == "__main__":
-	check()
+	version_check()
 
 	logging.basicConfig(
     	format="[%(asctime)s]: %(message)s",

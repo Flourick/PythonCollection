@@ -1,7 +1,7 @@
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.common.exceptions import NoSuchElementException
 import os
+
+from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
 
 #########################
 ######## FILL IN ########
@@ -10,7 +10,7 @@ STEAM_ID64 = ""
 #########################
 #########################
 
-def getProfile():
+def get_profile():
 	if os.name == "nt":
 		return "C:\\Users\\" + os.getlogin() + "\\chromeSeleniumProfile"
 	elif os.name == "posix":
@@ -18,7 +18,7 @@ def getProfile():
 	else:
 		raise Exception("WHAT SYSTEM ARE YOU USING?!")
 
-def saveFile(name, content):
+def save_file(name, content):
 	file = open(name, "w", encoding="utf-8")
 	file.write(content)
 	file.close()
@@ -27,9 +27,10 @@ def exit():
 	print()
 	input("Press enter to exit...")
 
+
 if __name__ == "__main__":
 	chromeOptions = webdriver.ChromeOptions()
-	chromeOptions.add_argument("--user-data-dir=" + getProfile())
+	chromeOptions.add_argument("--user-data-dir=" + get_profile())
 	chromeOptions.add_argument("--disable-extensions")
 	chromeOptions.add_argument("--log-level=3")
 	chromeOptions.add_argument("--disable-gpu")
