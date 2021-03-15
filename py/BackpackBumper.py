@@ -23,9 +23,9 @@ def save_file(name, content):
 	file.write(content)
 	file.close()
 
-def exit():
+def die():
 	print()
-	input("Press enter to exit...")
+	input("Press enter...")
 
 
 if __name__ == "__main__":
@@ -73,4 +73,4 @@ if __name__ == "__main__":
 	#driver.get_screenshot_as_file('bp.png')
 
 	driver.quit()
-	exit()
+	die()

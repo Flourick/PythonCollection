@@ -23,7 +23,7 @@ def version_check():
 def die(autoclose: bool = True):
 	if not autoclose:
 		print()
-		input("Press any key...")
+		input("Press enter...")
 	exit()
 
 
@@ -133,7 +133,7 @@ if __name__ == "__main__":
 			if not os.path.exists(root_directory):
 				os.makedirs(root_directory)
 
-		wrongCount = 0
+		wrong_count = 0
 
 		for mailbox, mailbox_decoded, directory in mailboxes:
 			email_count, email_ids = connection.get_all_email_ids_in_mailbox(mailbox)
@@ -146,7 +146,7 @@ if __name__ == "__main__":
 
 			if email_count > len(email_ids):
 				print("  -> WARNING: Received amount of emails does not equal with the amount of emails in mailbox! Some emails might be missing.")
-				wrongCount += email_count - len(email_ids)
+				wrong_count += email_count - len(email_ids)
 
 			cur_email_num = 0
 			for id in email_ids:
@@ -165,7 +165,7 @@ if __name__ == "__main__":
 
 						if not data:
 							print("  -> (" + str(cur_email_num) + "/" + str(email_count) +") ERROR: could not download email:", id.decode())
-							wrongCount += 1
+							wrong_count += 1
 						else:
 							with open(cur_email_path, 'wb') as file:
 								file.write(data[0][1])
@@ -181,11 +181,11 @@ if __name__ == "__main__":
 
 						if retry_count == 0:
 							print("  -> (" + str(cur_email_num) + "/" + str(email_count) +") ERROR: could not download email:", id.decode())
-							wrongCount += 1
+							wrong_count += 1
 
 		print()
-		if wrongCount > 0:
-			print("FINISHED! Could not download", wrongCount, "emails due to errors!")
+		if wrong_count > 0:
+			print("FINISHED! Could not download", wrong_count, "emails due to errors!")
 		else:
 			print("FINISHED! Downloaded all emails successfully!")
 
